@@ -22,16 +22,14 @@ import java.util.Calendar;
 
 import android.content.Context;
 
-import com.googlecode.android.widgets.DateSlider.labeler.TimeLabeler;
-
 public class DateTimeSlider extends DateSlider {
 
-	public DateTimeSlider(Context context, OnDateSetListener l,	Calendar calendar) {
-		this(context, l, calendar, null, null);
-	}
-	
-    public DateTimeSlider(Context context, OnDateSetListener l,	Calendar calendar, 
-    		Calendar minDate, Calendar maxDate) {
+    public DateTimeSlider(final Context context, final OnDateSetListener l, final Calendar calendar) {
+        this(context, l, calendar, null, null);
+    }
+
+    public DateTimeSlider(final Context context, final OnDateSetListener l, final Calendar calendar,
+            final Calendar minDate, final Calendar maxDate) {
         super(context, R.layout.datetimeslider, l, calendar, minDate, maxDate);
     }
 
@@ -39,9 +37,7 @@ public class DateTimeSlider extends DateSlider {
     protected void setTitle() {
         if (mTitleText != null) {
             final Calendar c = getTime();
-            int minute = c.get(Calendar.MINUTE)/TimeLabeler.MINUTEINTERVAL*TimeLabeler.MINUTEINTERVAL;
-            mTitleText.setText(String.format("Selected DateTime: %te/%tm/%ty %tH:%02d",
-                    c,c,c,c,minute));
+            mTitleText.setText(String.format("Selected DateTime: %te/%tm/%ty %tH:%tM", c, c, c, c, c));
         }
     }
 }
